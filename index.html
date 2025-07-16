@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Đội Bóng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>⚽ Random Đội Bóng</h1>
+            <p>Chia đội cân bằng theo trình độ</p>
+        </header>
+
+        <div class="input-section">
+            <h2>Thêm Cầu Thủ</h2>
+            <div class="add-player-form">
+                <input type="text" id="playerName" placeholder="Tên cầu thủ" required>
+                <select id="playerLevel">
+                    <option value="1">Trình độ 1 (Yếu)</option>
+                    <option value="2">Trình độ 2 (Trung bình)</option>
+                    <option value="3">Trình độ 3 (Khá)</option>
+                    <option value="4">Trình độ 4 (Giỏi)</option>
+                    <option value="5">Trình độ 5 (Xuất sắc)</option>
+                </select>
+                <button id="addPlayerBtn">Thêm Cầu Thủ</button>
+            </div>
+        </div>
+
+        <div class="players-section">
+            <div class="players-header">
+                <h2>Danh Sách Cầu Thủ</h2>
+                <button id="togglePlayersBtn" class="toggle-btn">👁️ Ẩn/Hiện</button>
+            </div>
+            <div class="players-controls">
+                <button id="randomTeamsBtn">🎲 Random</button>
+                <button id="balancedTeamsBtn">⚖️ Cân Bằng</button>
+                <button id="clearAllBtn">🗑️ Xóa Tất Cả</button>
+            </div>
+            <div id="playersList" class="players-list"></div>
+        </div>
+
+        <div class="teams-section">
+            <div class="team" id="team1">
+                <h3>Đội A</h3>
+                <div class="team-stats">
+                    <span id="team1Count">0 cầu thủ</span>
+                    <span id="team1Avg">Trình độ TB: 0</span>
+                </div>
+                <div id="team1Players" class="team-players"></div>
+            </div>
+
+            <div class="team" id="team2">
+                <h3>Đội B</h3>
+                <div class="team-stats">
+                    <span id="team2Count">0 cầu thủ</span>
+                    <span id="team2Avg">Trình độ TB: 0</span>
+                </div>
+                <div id="team2Players" class="team-players"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
