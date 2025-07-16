@@ -179,24 +179,43 @@ class TeamRandomizer {
             return;
         }
 
-        // Sắp xếp theo trình độ giảm dần
-        const sortedPlayers = [...this.players].sort((a, b) => b.level - a.level);
+        let bestTeam1 = [];
+        let bestTeam2 = [];
+        let bestDifference = Infinity;
 
-        this.team1 = [];
-        this.team2 = [];
+        // Thử 1000 lần random để tìm cách chia cân bằng nhất
+        for (let i = 0; i < 1000; i++) {
+            const shuffled = [...this.players].sort(() => Math.random() - 0.5);
+            const tempTeam1 = [];
+            const tempTeam2 = [];
 
-        // Thuật toán cân bằng: luôn thêm vào đội có tổng level thấp hơn
-        sortedPlayers.forEach(player => {
-            const team1Total = this.team1.reduce((sum, p) => sum + p.level, 0);
-            const team2Total = this.team2.reduce((sum, p) => sum + p.level, 0);
+            // Chia đều vào 2 đội
+            shuffled.forEach((player, index) => {
+                if (index % 2 === 0) {
+                    tempTeam1.push(player);
+                } else {
+                    tempTeam2.push(player);
+                }
+            });
 
-            if (team1Total <= team2Total) {
-                this.team1.push(player);
-            } else {
-                this.team2.push(player);
+            // Tính tổng level của mỗi đội
+            const team1Total = tempTeam1.reduce((sum, p) => sum + p.level, 0);
+            const team2Total = tempTeam2.reduce((sum, p) => sum + p.level, 0);
+            const difference = Math.abs(team1Total - team2Total);
+
+            // Nếu cách chia này cân bằng hơn thì lưu lại
+            if (difference < bestDifference) {
+                bestDifference = difference;
+                bestTeam1 = [...tempTeam1];
+                bestTeam2 = [...tempTeam2];
             }
-        });
 
+            // Nếu đã tìm được cách chia hoàn hảo (chênh lệch = 0) thì dừng
+            if (difference === 0) break;
+        }
+
+        this.team1 = bestTeam1;
+        this.team2 = bestTeam2;
         this.render();
     }
 

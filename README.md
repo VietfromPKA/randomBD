@@ -14,7 +14,7 @@
 ## 🚀 Cách sử dụng
 
 1. **Thêm cầu thủ**: Nhập tên và chọn trình độ (1-5)
-2. **Chia đội**: 
+2. **Chia đội**:
    - Nhấn **🎲 Random** để chia ngẫu nhiên
    - Nhấn **⚖️ Cân Bằng** để chia theo trình độ
 3. **Xem danh sách**: Nhấn **👁️ Ẩn/Hiện** để xem/ẩn danh sách cầu thủ
@@ -45,6 +45,7 @@
 ## 📦 Cài đặt
 
 1. Clone repository:
+
    ```bash
    git clone https://github.com/your-username/random-team-generator.git
    ```
